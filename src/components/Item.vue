@@ -13,8 +13,8 @@
 </template>
 
 <script type="text/ecmascript-6">
-import PubSub from 'puvsub-js'
-  export default {
+import PubSub from 'pubsub-js'
+export default {
     props: {
       todo: Object,
       index: Number

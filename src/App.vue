@@ -29,6 +29,19 @@
         this.updateTodo(todo, complete)
       })
     },
+    computed: {
+      completedCount () {
+        return this.todos.reduce((pre, todo) => pre + (todo.complete ? 1 : 0), 0)
+      },
+      checkAll: {
+        get () {
+          return this.todos.length === this.completedCount && this.completedCount > 0
+        },
+        set (value) {
+          this.selectAll(value)
+        }
+      }
+    },
     beforeDestroy () {
       this.$refs.header.$off('addtodo')
       this.$bus.$off('deleteTodo')
