@@ -19,7 +19,7 @@
     },
     computed: {
       completedCount () {
-        return this.todos.reduce((pre, todo) => pre + (todo.complete ? 1 : 0),0)
+        return this.todos.reduce((pre, todo) => pre + (todo.complete ? 1 : 0), 0)
       },
       checkAll: {
         get () {

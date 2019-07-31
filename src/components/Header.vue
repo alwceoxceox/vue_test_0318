@@ -6,7 +6,6 @@
 
 <script type="text/ecmascript-6">
   export default {
-    props: ['addTodo'],
     data () {
       return {
         title: ''
@@ -26,7 +25,8 @@
           title
         }
         // 向App的todos添加一个todo
-        this.addTodo(todo)
+        // 分发自定义事件
+        this.$emit('addTodo', todo)
         // 清除输入
         this.title = ''
       }

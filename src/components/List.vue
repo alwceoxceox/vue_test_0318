@@ -1,15 +1,15 @@
 <template>
   <ul class="todo-main">
-        <Item v-for="(todo,index) in todos" :key="todo.id" :todo="todo" :deleteTodo="deleteTodo" :index="index" :updateTodo="updateTodo"></Item>
+        <Item v-for="(todo,index) in todos" :key="todo.id" :todo="todo" :index="index"></Item>
   </ul>
 </template>
 
 <script type="text/ecmascript-6">
   import Item from './Item.vue'
     export default {
-      props: ['todos', 'deleteTodo', 'updateTodo'],
+      props: ['todos'],
       components: {
-        Item
+        // Item
       }
     }
 </script>

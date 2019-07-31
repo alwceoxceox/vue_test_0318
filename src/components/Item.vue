@@ -13,12 +13,11 @@
 </template>
 
 <script type="text/ecmascript-6">
+import PubSub from 'puvsub-js'
   export default {
     props: {
       todo: Object,
-      deleteTodo: Function,
       index: Number,
-      updateTodo: Function
     },
     data () {
       return {
@@ -38,7 +37,9 @@
      },
      deleteItem () {
        if (confirm('确定删除吗?')) {
-         this.deleteTodo(this.index)
+        //  this.deleteTodo(this.index)
+        // 通过全局事件总线对象分发自定义事件
+        this.$bus.$emit('deleteTodo', this.index)
        }
      }
     },
@@ -48,7 +49,8 @@
            return this.todo.complete
         },
         set (value) {
-          this.updateTodo(this.todo, value)
+          // this.updateTodo(this.todo, value)
+          PubSub.publish('updateTodo', {todo: this.todo, complete: value})
         }
       }
     }
