@@ -17,7 +17,7 @@ import PubSub from 'puvsub-js'
   export default {
     props: {
       todo: Object,
-      index: Number,
+      index: Number
     },
     data () {
       return {

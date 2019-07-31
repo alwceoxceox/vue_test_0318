@@ -1,6 +1,7 @@
 <template>
   <ul class="todo-main">
-        <Item v-for="(todo,index) in todos" :key="todo.id" :todo="todo" :index="index"></Item>
+        <Item v-for="(todo,index) in todos" :key="todo.id"
+         :todo="todo" :index="index"></Item>
   </ul>
 </template>
 

@@ -1,10 +1,8 @@
 <template>
-
   <div class="todo-container">
     <div class="todo-wrap">
       <Header ref="header"></Header>
       <List :todos="todos"></List>
-      <!--<Footer :selectAll="selectAll" :todos="todos" :deleteCompleted="deleteCompleted"/>-->
       <Footer>
         <input type="checkbox" v-model="checkAll" slot="left"/>
         <button class="btn btn-danger" v-if="completedCount>0" @click="deleteCompleted" slot="right">清除已完成任务</button>
@@ -23,11 +21,6 @@
       return {
         todos: JSON.parse(localStorage.getItem('todos_key') || '[]')
       }
-    },
-    components: {
-      Header,
-      List,
-      Footer
     },
     mounted () {
       this.$refs.header.$on('addTodo', this.addTodo)
@@ -48,6 +41,10 @@
       deleteTodo (index) {
         this.todos.splice(index, 1)
       },
+       updateTodo (todo, complete) {
+        console.log('updateTodo')
+        todo.complete = complete
+      },
       // 全选或全不选
       selectAll (isAll) {
         this.todos.forEach(todo => (todo.complete = isAll))
@@ -64,6 +61,11 @@
           localStorage.setItem('todos_key', JSON.stringify(value))
         }
       }
+    },
+    components: {
+      Header,
+      List,
+      Footer
     }
   }
 </script>
