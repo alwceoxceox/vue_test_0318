@@ -21,7 +21,8 @@ export default[{
                 children: [
                     {
                         path: '/home/message/detail/:id',
-                        component: MessageDetail
+                        component: MessageDetail,
+                        props: route => ({id: route.params.id * 1})
                     }
                 ]
             },

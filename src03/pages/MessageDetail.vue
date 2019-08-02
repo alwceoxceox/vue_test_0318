@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul>
-        <li>ID: {{$route.params.id}}</li>
+        <li>ID: {{id}}</li>
         <li>TITLE: {{messageDetail.title}}</li>
         <li>CONTENT: {{messageDetail.content}}</li>
     </ul>
@@ -14,27 +14,27 @@
     {id: 5, title: 'message005', content: 'message content005'}
   ]
   export default {
-      data () {
+    props: {
+      id: Number
+    },
+    data () {
           return {
               messageDetail: {}
           }
       },
     mounted () {
         setTimeout(() => {
-            const id = this.$route.params.id * 1
-            console.log(id)
-            const detail = this.messageDetails.find(detail => detail.id === id)
-            console.log(detail)
+            // 得到当前的id
+            const id = this.id
+            const detail = messageDetails.find(detail => detail.id === id)
             this.messageDetail = detail
         }, 1000)
     },
     watch: {
-        $route (value) {
+        id (value) {
             console.log('watch $route()')
             setTimeout(() => {
-                const id = this.value.params.id * 1
-                console.log(id)
-                const detail = this.messageDetails.find(detail => detail.id === id)
+                const detail = messageDetails.find(detail => detail.id === value)
                 this.messageDetail = detail
             }, 1000)
         }
